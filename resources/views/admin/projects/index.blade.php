@@ -14,18 +14,20 @@
                     <th>NAME</th>
                     <th>PALETTE</th>
                     <th>JUMBO</th>
+                    <th>ACTIONS</th>
+
                 </tr>
             </thead>
             <tbody class="table-group-divider">
 
                 @forelse ($projects as $project)
-                
                     <tr class="table-primary">
                         <td scope="row">{{ $project->id }}</td>
                         <td>{{ $project->slug }}</td>
                         <td>{{ $project->name }}</td>
                         <td><img height="50px" src="{{ $project->color_palette }}" alt=""></td>
                         <td><img height="100px" src="{{ $project->jumbo_image }}" alt=""></td>
+                        <td>VIEW | EDIT | DELETE</td>
                     </tr>
                 @empty
                     <tr>no projects yet</tr>

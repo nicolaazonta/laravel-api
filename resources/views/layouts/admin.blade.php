@@ -41,7 +41,7 @@
 
         <div class="container-fluid vh-100">
             <div class="row h-100">
-                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+                <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light collapse">
                     <div class="position-sticky pt-3">
                         <ul class="nav flex-column">
                             <li class="nav-item">
@@ -55,7 +55,7 @@
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-dark' : '' }}"
                                     href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-thumbtack"></i>
-                                    {{ __('Posts') }}
+                                    {{ __('Projects') }}
                                 </a>
                             </li>
                             <li class="nav-item">
