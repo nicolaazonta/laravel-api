@@ -53,7 +53,7 @@
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link {{ Route::currentRouteName() == 'admin.posts.index' ? 'bg-dark' : '' }}"
-                                    href="{{ route('admin.posts.index') }}">
+                                    href="{{ route('admin.projects.index') }}">
                                     <i class="fa-solid fa-thumbtack"></i>
                                     {{ __('Posts') }}
                                 </a>

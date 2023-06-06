@@ -17,7 +17,9 @@
                 </tr>
             </thead>
             <tbody class="table-group-divider">
+
                 @forelse ($projects as $project)
+                
                     <tr class="table-primary">
                         <td scope="row">{{ $project->id }}</td>
                         <td>{{ $project->slug }}</td>
