@@ -19,8 +19,8 @@ class ProjectSeeder extends Seeder
     {
         for ($i=0; $i < 19; $i++) {             
             $project = new Project();        
-            $project->slug = Str::slug($project->name, '-');
             $project->name = $faker->sentence(4);
+            $project->slug = Str::slug($project->name, '-');
             $project->description = $faker->paragraphs(asText:true);
             $project->color_palette = $faker->imageUrl(category:'palette', format:'jpg', width:360, height:360);
             $project->jumbo_image = $faker->imageUrl(category:'jumbo',format:'jpg');
