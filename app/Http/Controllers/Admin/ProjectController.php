@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ProjectController;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Project;
 use App\Http\Requests\StoreProjectRequest;
@@ -18,7 +18,7 @@ class ProjectController extends Controller
     {
 
         $projects = Project::orderByDesc('id')->paginate(20);
-        return view('admin.dashboard');
+        return view('admin.projects.index');
 
         /* $posts = Post::orderByDesc('id')->paginate(8);
 
