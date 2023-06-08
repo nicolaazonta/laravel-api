@@ -2,8 +2,8 @@
 
 @section('content')
     <h2 class="py-3 text-uppercase fw-bolder">my projects</h2>
-    <a name="" id="" class="btn btn-primary rounded-circle my-3" href="{{ route('admin.projects.create') }}"
-        role="button"><i class="fa-solid fa-plus"></i></a>
+    <a name="" id="" class="btn btn-primary rounded my-3" href="{{ route('admin.projects.create') }}"
+        role="button"><i class="fa-solid fa-plus"></i> add a project</a>
 
     @if (session('message'))
         <div class="alert alert-warning" role="alert">
@@ -23,10 +23,10 @@
                     <th>ID</th>
                     <th>SLUG</th>
                     <th>NAME</th>
+                    <th>TYPE</th>
                     <th>PALETTE</th>
                     <th>JUMBO</th>
                     <th>ACTIONS</th>
-
                 </tr>
             </thead>
             <tbody class="table-group-divider">
@@ -36,6 +36,7 @@
                         <td scope="row">{{ $project->id }}</td>
                         <td>{{ $project->slug }}</td>
                         <td>{{ $project->name }}</td>
+                        <td>{{ $project->type?->name }}</td>
                         <td><img height="50px" src="{{ $project->color_palette }}" alt=""></td>
                         <td><img height="100px" src="{{ $project->jumbo_image }}" alt=""></td>
                         <td>

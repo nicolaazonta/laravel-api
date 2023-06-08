@@ -28,7 +28,7 @@ class UpdateProjectRequest extends FormRequest
             'description' => 'required',
             'color_palette' => 'required',
             'jumbo_image' => 'required',
-
+            'type_id' => ['exists:types,id']
         ];
     }
 }
