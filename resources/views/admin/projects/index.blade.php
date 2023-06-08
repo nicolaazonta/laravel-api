@@ -2,6 +2,16 @@
 
 @section('content')
     <h2 class="py-3 text-uppercase fw-bolder">my projects</h2>
+    <a name="" id="" class="btn btn-primary rounded-circle my-3" href="{{ route('admin.projects.create') }}"
+        role="button"><i class="fa-solid fa-plus"></i></a>
+
+    @if (session('message'))
+        <div class="alert alert-warning" role="alert">
+            <strong>{{ session('message') }}</strong>
+        </div>
+    @endif
+
+
     <div class="table-responsive">
         <table class="table table-striped
     table-hover	
@@ -55,12 +65,14 @@
                                             are u sure to delete this project?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
 
-                                            <form action="{{route('admin.projects.destroy', $project->id)}}" method="post">
+                                            <form action="{{ route('admin.projects.destroy', $project->id) }}"
+                                                method="post">
                                                 @csrf
                                                 @method('DELETE')
-        
+
                                                 <button type="submit" class="btn btn-primary">Delete</button>
                                             </form>
                                         </div>
@@ -86,9 +98,6 @@
             </tfoot>
         </table>
     </div>
-
-    
-
 @endsection
 
 
