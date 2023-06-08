@@ -1,15 +1,16 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form action="{{ route('admin.projects.store') }}" method="post">
+    <form action="{{ route('admin.projects.update', $project->id) }}" method="post">
         @csrf
+        @method('PUT')
 
         <div class="mb-3">{{-- name section --}}
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name"
                 class="form-control @error('name') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="nameHelper" value="{{ old('name') }}">
+                aria-describedby="nameHelper" value="{{ old('name', $project->name) }}">
             <small id="nameHelper" class="text-muted">insert here project name</small>
             @error('name')
                 <div class="alert alert-primary" role="alert">
@@ -22,7 +23,7 @@
             <textarea type="text" name="description" id="description"
                 class="form-control @error('description') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="descriptionHelper">{{ old('description') }}
+                aria-describedby="descriptionHelper">{{ old('description', $project->description) }}
             </textarea>
             <small id="descriptionHelper" class="text-muted">insert here project description</small>
             @error('description')
@@ -36,7 +37,7 @@
             <textarea type="text" name="color_palette" id="color_palette"
                 class="form-control @error('color_palette') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="color_paletteHelper">{{ old('color_palette') }}
+                aria-describedby="color_paletteHelper">{{ old('color_palette', $project->color_palette) }}
             </textarea>
             <small id="color_paletteHelper" class="text-muted">insert here project color palette</small>
             @error('color_palette')
@@ -50,7 +51,7 @@
             <textarea type="text" name="jumbo_image" id="jumbo_image"
                 class="form-control @error('jumbo_image') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="jumbo_imageHelper">{{ old('jumbo_image') }}
+                aria-describedby="jumbo_imageHelper">{{ old('jumbo_image', $project->jumbo_image) }}
             </textarea>
             <small id="jumbo_imageHelper" class="text-muted">insert here project jumbo image</small>
             @error('jumbo_image')
