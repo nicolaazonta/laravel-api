@@ -38,7 +38,11 @@
                         <td>{{ $project->slug }}</td>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->type?->name }}</td>
-                        <td>{{ $project-> }}</td>
+                        <td>
+                            @foreach ($project->Technologies as $technology)
+                                {{$technology->name}}
+                            @endforeach    
+                        </td>
                         <td><img height="50px" src="{{ $project->color_palette }}" alt=""></td>
                         <td><img height="100px" src="{{ $project->jumbo_image }}" alt=""></td>
                         <td>

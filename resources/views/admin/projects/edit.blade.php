@@ -84,7 +84,7 @@
                         @else
                             {{-- 2 (else) --}}
                             <input name='technologies[]' type='checkbox' value='{{ $technology->id }}' class='form-check-input'
-                                {{ $project->technology->contains($technology) ? 'checked' : '' }}>
+                                {{ $project->technologies->contains($technology) ? 'checked' : '' }}>
                         @endif
                         {{ $technology->name }}
                     </label>
