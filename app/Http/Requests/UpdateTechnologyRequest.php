@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateProjectRequest extends FormRequest
+class UpdateTechnologyRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class UpdateProjectRequest extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return false;
     }
 
     /**
@@ -25,11 +25,6 @@ class UpdateProjectRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'description' => 'required',
-            'color_palette' => 'required',
-            'jumbo_image' => 'required',
-            'type_id' => ['exists:types,id'],
-            'technologies' => ['exists:technologies,id'],
         ];
     }
 }

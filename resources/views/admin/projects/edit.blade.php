@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form action="{{ route('admin.projects.update', $project->id) }}" method="post">
+    <form class="p-4" action="{{ route('admin.projects.update', $project->id) }}" method="post">
         @csrf
         @method('PUT')
 
@@ -65,10 +65,36 @@
             <select class="form-select @error('type_id') is invalid @enderror" name="type_id" id="type_id">
                 <option value="">Select a type</option>
                 @foreach ($types as $type)
-                    <option value="{{ $type->id }}"{{ $type->id == old('type_id', $project->type->id) ? 'selected' : '' }}>{{ $type->name }}</option>
+                    <option
+                        value="{{ $type->id }}"{{ $type->id == old('type_id', $project->type->id) ? 'selected' : '' }}>
+                        {{ $type->name }}</option>
                 @endforeach
             </select>
         </div>
+
+        <div class='form-group'>
+            <p>Seleziona i tag:</p>
+            @foreach ($technologies as $technology)
+                <div class="form-check @error('tags') is-invalid @enderror">
+                    <label class='form-check-label'>
+                        @if ($errors->any())
+                            {{-- 1 (if) --}}
+                            <input name="technologies[]" type="checkbox" value="{{ $technology->id }}" class="form-check-input"
+                                {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        @else
+                            {{-- 2 (else) --}}
+                            <input name='technologies[]' type='checkbox' value='{{ $technology->id }}' class='form-check-input'
+                                {{ $project->technology->contains($technology) ? 'checked' : '' }}>
+                        @endif
+                        {{ $technology->name }}
+                    </label>
+                </div>
+            @endforeach
+            @error('technologies')
+                <div class='invalid-feedback'>{{ $message }}</div>
+            @enderror
+        </div>
+
         <button type="submit" class="btn btn-primary">save</button>
     </form>
 @endsection

@@ -24,6 +24,7 @@
                     <th>SLUG</th>
                     <th>NAME</th>
                     <th>TYPE</th>
+                    <th>TECHNOLOGY</th>
                     <th>PALETTE</th>
                     <th>JUMBO</th>
                     <th>ACTIONS</th>
@@ -37,19 +38,20 @@
                         <td>{{ $project->slug }}</td>
                         <td>{{ $project->name }}</td>
                         <td>{{ $project->type?->name }}</td>
+                        <td>{{ $project-> }}</td>
                         <td><img height="50px" src="{{ $project->color_palette }}" alt=""></td>
                         <td><img height="100px" src="{{ $project->jumbo_image }}" alt=""></td>
                         <td>
                             <a class="btn btn-info m-1" href="{{ route('admin.projects.show', $project->id) }}"
-                                title="View"><i class="fa-solid fa-eye"></i></a>
+                                title="View">view</a>
 
                             <a class="btn btn-warning m-1" href="{{ route('admin.projects.edit', $project->id) }}"
-                                title="edit"><i class="fa-solid fa-pencil"></i></a>
+                                title="edit">edit</i></a>
 
                             <!-- Modal trigger button -->
                             <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
                                 data-bs-target="#modal-{{ $project->id }}">
-                                <i class="fa-solid fa-trash"></i>
+                                delete
                             </button>
 
                             <!-- Modal Body -->

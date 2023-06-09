@@ -24,11 +24,12 @@ class StoreProjectRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'description' => 'required',
-            'color_palette' => 'required',
-            'jumbo_image' => 'required',
-            'type_id' => ['exists:types,id']
+            'name' => ['required'],
+            'description' => ['required'],
+            'color_palette' => ['required'],
+            'jumbo_image' => ['required'],
+            'type_id' => ['exists:types,id'],
+            'technologies' => ['exists:technologies,id']
         ];
     }
 }

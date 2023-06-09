@@ -1,13 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Type;
-use App\Http\Requests\StoreTypeRequest;
-use App\Http\Requests\UpdateTypeRequest;
+use App\Models\Technology;
+use App\Http\Requests\StoreTechnologyRequest;
+use App\Http\Requests\UpdateTechnologyRequest;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 
-class TypeController extends Controller
+class TechnologyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,18 +27,18 @@ class TypeController extends Controller
      */
     public function create()
     {
-        $types = Type::orderByDesc('id')->get();
+        $technologies = Technology::all();
 
-        return view('admin.projects.create', compact('types'));
+        return view('admin.projects.create', compact('technologies'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTypeRequest  $request
+     * @param  \App\Http\Requests\StoreTechnologyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreTypeRequest $request)
+    public function store(StoreTechnologyRequest $request)
     {
         $val_data = $request->validated();
 
@@ -45,18 +46,18 @@ class TypeController extends Controller
 
         $val_data['slug'] = $slug;
 
-        Type::create($val_data);
+        Technology::create($val_data);
 
-        return to_route('admin.types.index')->with('message', 'Type created successfully');
+        return to_route('admin.projects.index')->with('message','technology created successfully');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function show(Type $type)
+    public function show(Technology $technology)
     {
         //
     }
@@ -64,10 +65,10 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function edit(Type $type)
+    public function edit(Technology $technology)
     {
         //
     }
@@ -75,11 +76,11 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateTypeRequest  $request
-     * @param  \App\Models\Type  $type
+     * @param  \App\Http\Requests\UpdateTechnologyRequest  $request
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateTypeRequest $request, Type $type)
+    public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
         //
     }
@@ -87,10 +88,10 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Type  $type
+     * @param  \App\Models\Technology  $technology
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Type $type)
+    public function destroy(Technology $technology)
     {
         //
     }

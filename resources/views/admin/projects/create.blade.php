@@ -1,10 +1,10 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form action="{{ route('admin.projects.store') }}" method="post">
+    <form class="p-4" action="{{ route('admin.projects.store') }}" method="post">
         @csrf
 
-        <div class="mb-3 mt-5">{{-- name section --}}
+        <div class="mb-3">{{-- name section --}}
             <label for="name" class="form-label">Name</label>
             <input type="text" name="name" id="name"
                 class="form-control @error('name') is-invalid          
@@ -68,6 +68,22 @@
                         {{ $type->name }}</option>
                 @endforeach
             </select>
+        </div>
+
+        <div class='form-group'>
+            <p>Seleziona i tag:</p>
+            @foreach ($technologies as $technology)
+                <div class="form-check @error('technologies') is-invalid @enderror">
+                    <label class='form-check-label'>
+                        <input name='technologies[]' type='checkbox' value='{{ $technology->id }}' class='form-check-input'
+                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        {{ $technology->name }}
+                    </label>
+                </div>
+            @endforeach
+            @error('tags')
+                <div class='invalid-feedback'>{{ $message }}</div>
+            @enderror
         </div>
 
         <button type="submit" class="btn btn-primary">save</button>
