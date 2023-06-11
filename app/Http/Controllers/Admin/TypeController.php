@@ -93,6 +93,7 @@ class TypeController extends Controller
      */
     public function destroy(Type $type)
     {
-        //
+        $type->delete();
+        return to_route('admin.projects.index')->with('message','type deleted');
     }
 }
