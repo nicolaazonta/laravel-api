@@ -18,8 +18,9 @@ return new class extends Migration
             $table->string('name', '100')->unique();
             $table->string('slug');
             $table->text('description', '100')->nullable();
-            $table->string('color_palette')->nullable();
-            $table->string('jumbo_image')->nullable();
+            $table->text('source_code')->nullable();
+            $table->text('site_link')->nullable();
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

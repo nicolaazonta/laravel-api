@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form class="p-4" action="{{ route('admin.projects.store') }}" method="post">
+    <form class="bg-light" class="p-4" action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">{{-- name section --}}
@@ -31,29 +31,43 @@
                 </div>
             @enderror
         </div>
-        <div class="mb-3">{{-- color_palette section --}}
-            <label for="color_palette" class="form-label">Color palette</label>
-            <textarea type="text" name="color_palette" id="color_palette"
-                class="form-control @error('color_palette') is-invalid          
+        <div class="mb-3">{{-- source_code section --}}
+            <label for="source_code" class="form-label">Color palette</label>
+            <textarea type="text" name="source_code" id="source_code"
+                class="form-control @error('source_code') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="color_paletteHelper">{{ old('color_palette') }}
+                aria-describedby="source_codeHelper">{{ old('source_code') }}
             </textarea>
-            <small id="color_paletteHelper" class="text-muted">insert here project color palette</small>
-            @error('color_palette')
+            <small id="source_codeHelper" class="text-muted">insert here project source code link</small>
+            @error('source_code')
                 <div class="alert alert-primary" role="alert">
                     <strong>ERROR </strong>{{ $message }}
                 </div>
             @enderror
         </div>
-        <div class="mb-3">{{-- jumbo_image section --}}
-            <label for="jumbo_image" class="form-label">Jumbo image</label>
-            <textarea type="text" name="jumbo_image" id="jumbo_image"
-                class="form-control @error('jumbo_image') is-invalid          
+        <div class="mb-3">{{-- site_link section --}}
+            <label for="site_link" class="form-label">Color palette</label>
+            <textarea type="text" name="site_link" id="site_link"
+                class="form-control @error('site_link') is-invalid          
                 @enderror" placeholder="type here"
-                aria-describedby="jumbo_imageHelper">{{ old('jumbo_image') }}
+                aria-describedby="site_linkHelper">{{ old('site_link') }}
             </textarea>
-            <small id="jumbo_imageHelper" class="text-muted">insert here project jumbo image</small>
-            @error('jumbo_image')
+            <small id="site_linkHelper" class="text-muted">insert here project link site</small>
+            @error('site_link')
+                <div class="alert alert-primary" role="alert">
+                    <strong>ERROR </strong>{{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="mb-3">{{-- cover_image section --}}
+            <label for="cover_image" class="form-label">Jumbo image</label>
+            <textarea type="text" name="cover_image" id="cover_image"
+                class="form-control @error('cover_image') is-invalid          
+                @enderror" placeholder="type here"
+                aria-describedby="cover_imageHelper">{{ old('cover_image') }}
+            </textarea>
+            <small id="cover_imageHelper" class="text-muted">insert here project cover image</small>
+            @error('cover_image')
                 <div class="alert alert-primary" role="alert">
                     <strong>ERROR </strong>{{ $message }}
                 </div>

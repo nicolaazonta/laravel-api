@@ -22,8 +22,9 @@ class ProjectSeeder extends Seeder
             $project->name = $faker->sentence(4);
             $project->slug = Str::slug($project->name, '-');
             $project->description = $faker->paragraphs(asText:true);
-            $project->color_palette = $faker->imageUrl(category:'palette', format:'jpg', width:360, height:360);
-            $project->jumbo_image = $faker->imageUrl(category:'jumbo',format:'jpg');
+            $project->source_code = ('https://github.com/nicolaazonta');
+            $project->site_link = ('https://github.com/nicolaazonta');
+            $project->cover_image = $faker->imageUrl(category:'cover',format:'jpg');
             $project->save();
         }
     }

@@ -102,12 +102,13 @@
                 <thead class="">
                     <tr>
                         <th>ID</th>
-                        <th>SLUG</th>
+                        {{-- <th>SLUG</th> --}}
                         <th>NAME</th>
                         <th>TYPE</th>
                         <th>TECHNOLOGY</th>
-                        <th>PALETTE</th>
-                        <th>JUMBO</th>
+                        <th>SOURCE CODE</th>
+                        {{-- <th>SITE LINK</th> --}}
+                        <th>COVER IMG</th>
                         <th>ACTIONS</th>
                     </tr>
                 </thead>
@@ -116,7 +117,7 @@
                     @forelse ($projects as $project)
                         <tr class="table-primary">
                             <td scope="row">{{ $project->id }}</td>
-                            <td>{{ $project->slug }}</td>
+                            {{-- <td>{{ $project->slug }}</td> --}}
                             <td>{{ $project->name }}</td>
                             <td>{{ $project->type?->name }}</td>
                             <td>
@@ -124,8 +125,10 @@
                                     {{ $technology->name }}
                                 @endforeach
                             </td>
-                            <td><img height="50px" src="{{ $project->color_palette }}" alt=""></td>
-                            <td><img height="100px" src="{{ $project->jumbo_image }}" alt=""></td>
+                            <td><a class="text-uppercase badge-dark badge" href="{{ $project->source_code }}">go</a></td>
+                            {{-- <td><a class="text-uppercase badge-dark badge" href="{{ $project->site_link }}">go</a></td> --}}
+
+                            <td><img height="100px" src="{{ $project->cover_image }}" alt=""></td>
                             <td>
                                 <a class="btn btn-info m-1" href="{{ route('admin.projects.show', $project->id) }}"
                                     title="View">view</a>
