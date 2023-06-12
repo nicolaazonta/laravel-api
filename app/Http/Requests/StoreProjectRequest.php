@@ -27,7 +27,9 @@ class StoreProjectRequest extends FormRequest
             'name' => ['required'],
             'description' => ['required'],
             'color_palette' => ['required'],
-            'jumbo_image' => ['required'],
+            'source_code' => ['nullable'],
+            'link_site' => ['nullable'],
+            'cover_image' => ['nullable'],
             'type_id' => ['exists:types,id'],
             'technologies' => ['exists:technologies,id']
         ];

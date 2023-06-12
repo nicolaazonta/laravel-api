@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form class="bg-light" class="p-4" action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
+    <form class="" class="p-4" action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <div class="mb-3">{{-- name section --}}
@@ -32,7 +32,7 @@
             @enderror
         </div>
         <div class="mb-3">{{-- source_code section --}}
-            <label for="source_code" class="form-label">Color palette</label>
+            <label for="source_code" class="form-label">Source code</label>
             <textarea type="text" name="source_code" id="source_code"
                 class="form-control @error('source_code') is-invalid          
                 @enderror" placeholder="type here"
@@ -46,7 +46,7 @@
             @enderror
         </div>
         <div class="mb-3">{{-- site_link section --}}
-            <label for="site_link" class="form-label">Color palette</label>
+            <label for="site_link" class="form-label">Site link</label>
             <textarea type="text" name="site_link" id="site_link"
                 class="form-control @error('site_link') is-invalid          
                 @enderror" placeholder="type here"
@@ -60,7 +60,7 @@
             @enderror
         </div>
         <div class="mb-3">{{-- cover_image section --}}
-            <label for="cover_image" class="form-label">Jumbo image</label>
+            <label for="cover_image" class="form-label">Cover image</label>
             <textarea type="text" name="cover_image" id="cover_image"
                 class="form-control @error('cover_image') is-invalid          
                 @enderror" placeholder="type here"
