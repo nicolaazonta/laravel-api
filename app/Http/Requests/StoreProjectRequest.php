@@ -26,7 +26,6 @@ class StoreProjectRequest extends FormRequest
         return [
             'name' => ['required'],
             'description' => ['required'],
-            'color_palette' => ['required'],
             'source_code' => ['nullable'],
             'link_site' => ['nullable'],
             'cover_image' => ['nullable'],

@@ -1,8 +1,24 @@
 @extends('layouts.admin')
 
 @section('content')
-    <form class="" class="p-4" action="{{ route('admin.projects.store') }}" method="post" enctype="multipart/form-data">
+    <form class="" class="p-4" action="{{ route('admin.projects.store') }}" method="post"
+        enctype="multipart/form-data">
         @csrf
+        <!-- /resources/views/post/create.blade.php -->
+
+        <h1>Create Post</h1>
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <!-- Create Post Form -->
 
         <div class="mb-3">{{-- name section --}}
             <label for="name" class="form-label">Name</label>
