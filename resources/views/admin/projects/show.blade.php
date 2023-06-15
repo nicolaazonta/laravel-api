@@ -6,6 +6,7 @@
         <div class="card-body">
             <h4 class="card-title">{{$project->name}}</h4>
             <p class="card-text">{{$project->description}}</p>
+            <p><strong>slug: </strong>{{ $project->slug }}</p>
         </div>
     </div>
 @endsection
