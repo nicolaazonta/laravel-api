@@ -130,10 +130,10 @@
 
                             <td><img height="100px" src="{{ $project->cover_image }}" alt=""></td>
                             <td>
-                                <a class="btn btn-info m-1" href="{{ route('admin.projects.show', $project->id) }}"
+                                <a class="btn btn-info m-1" href="{{ route('admin.projects.show', $project->slug) }}"
                                     title="View">view</a>
 
-                                <a class="btn btn-warning m-1" href="{{ route('admin.projects.edit', $project->id) }}"
+                                <a class="btn btn-warning m-1" href="{{ route('admin.projects.edit', $project->slug) }}"
                                     title="edit">edit</i></a>
 
                                 <!-- Modal trigger button -->
@@ -160,7 +160,7 @@
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
 
-                                                <form action="{{ route('admin.projects.destroy', $project->id) }}"
+                                                <form action="{{ route('admin.projects.destroy', $project->slug) }}"
                                                     method="post">
                                                     @csrf
                                                     @method('DELETE')
