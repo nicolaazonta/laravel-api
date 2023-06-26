@@ -15,13 +15,17 @@
                         <a href=""><i class="fa-solid fa-pencil fa-2x text-dark me-1"
                                 aria-hidden="true"></i></a>{{-- edit --}}
 
-
+                                
                         <a data-bs-toggle="modal" data-bs-target="#modal-{{ $type->id }}" href=""><i
                                 class="fa-solid fa-trash fa-2x text-dark" aria-hidden="true"></i></a>{{-- delete --}}
                     </div>
 
                     <!-- Modal Body -->
                     <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
+                    <!-- Modal trigger button -->
+                   
+
+
                     <div class="modal fade" id="modal-{{ $type->id }}" tabindex="-1" data-bs-backdrop="static"
                         data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
@@ -35,7 +39,7 @@
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
 
-                                    <form action="{{ route('admin.types.destroy', $type->id) }}" method="post">
+                                    <form action="{{ route('admin.types.destroy', $type->slug) }}" method="post">
                                         @csrf
                                         @method('DELETE')
 
@@ -49,10 +53,11 @@
                 </li>
             @endforeach
 
-            <form class="input-group" action="{{ route('admin.types.store') }}" method="post" enctype="multipart/form-data">
+            <form class="input-group" action="{{ route('admin.types.store') }}" method="post"
+                enctype="multipart/form-data">
                 @csrf
-                <input type="text" name="name" id="name" class="form-control" placeholder="new type" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
+                <input type="text" name="name" id="name" class="form-control" placeholder="new type"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
                 <button class="btn btn-outline-dark text-uppercase" type="submit" id="button-addon2">add</button>
             </form>
         </ul>
@@ -168,6 +173,7 @@
 
                                                     <button type="submit" class="btn btn-primary">Delete</button>
                                                 </form>
+                                                
                                             </div>
                                         </div>
                                     </div>
