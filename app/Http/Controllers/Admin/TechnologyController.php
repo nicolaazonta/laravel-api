@@ -93,6 +93,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return to_route('admin.projects.index')->with('message','technology deleted');
     }
 }

@@ -2,6 +2,7 @@
 
 
 @section('sidebar')
+
     <div class="card text-bg-warning m-3 rounded-3">{{-- types card --}}
         <div class="card-header">
             <h4 class="text-uppercase fw-bold">types</h4>
@@ -18,12 +19,7 @@
                                 
                         <a data-bs-toggle="modal" data-bs-target="#modal-{{ $type->id }}" href=""><i
                                 class="fa-solid fa-trash fa-2x text-dark" aria-hidden="true"></i></a>{{-- delete --}}
-                    </div>
-
-                    <!-- Modal Body -->
-                    <!-- if you want to close by clicking outside the modal, delete the last endpoint:data-bs-backdrop and data-bs-keyboard -->
-                    <!-- Modal trigger button -->
-                   
+                    </div>              
 
 
                     <div class="modal fade" id="modal-{{ $type->id }}" tabindex="-1" data-bs-backdrop="static"
@@ -49,7 +45,6 @@
                             </div>
                         </div>
                     </div>
-
                 </li>
             @endforeach
 
@@ -70,17 +65,53 @@
         </div>
 
         <ul class="list-group list-group-flush">
-
             @foreach ($technologies as $technology)
-                <li class="list-group-item bg-transparent  text-uppercase fw-bolder">
+                <li
+                    class="list-group-item bg-transparent text-uppercase fw-bolder d-flex align-items-center justify-content-between">
                     {{ $technology->name }}
+                    <div>
+                        <a href=""><i class="fa-solid fa-pencil fa-2x text-dark me-1"
+                                aria-hidden="true"></i></a>{{-- edit --}}
+
+                                
+                        <a data-bs-toggle="modal" data-bs-target="#modal-{{ $technology->id }}" href=""><i
+                                class="fa-solid fa-trash fa-2x text-dark" aria-hidden="true"></i></a>{{-- delete --}}
+                    </div>               
+
+
+                    <div class="modal fade" id="modal-{{ $technology->id }}" tabindex="-1" data-bs-backdrop="static"
+                        data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="modalTitleId">attention</h5>
+                                </div>
+                                <div class="modal-body">
+                                    are u sure to delete this technology?
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+                                    <form action="{{ route('admin.technologies.destroy', $technology->slug) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+
+                                        <button type="submit" class="btn btn-primary">Delete</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </li>
             @endforeach
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="new technology" aria-label="Recipient's username"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-outline-dark" type="button" id="button-addon2">add</button>
-            </div>
+
+            <form class="input-group" action="{{ route('admin.technologies.store') }}" method="post"
+                enctype="multipart/form-data">
+                @csrf
+                <input type="text" name="name" id="name" class="form-control" placeholder="new type"
+                    aria-label="Recipient's username" aria-describedby="button-addon2">
+                <button class="btn btn-outline-dark text-uppercase" type="submit" id="button-addon2">add</button>
+            </form>
         </ul>
     </div>
 @endsection
