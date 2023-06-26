@@ -99,7 +99,6 @@
                 @endforeach
             </select>
         </div>
-
         <div class='form-group'>
             <p>Seleziona i tag:</p>
             @foreach ($technologies as $technology)

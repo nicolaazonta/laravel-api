@@ -48,11 +48,12 @@
 
                 </li>
             @endforeach
-            <form class="input-group" action="{{ route('admin.types.store') }}" method="post">
+
+            <form class="input-group" action="{{ route('admin.types.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
-                <input   type="text" class="form-control" placeholder="new type" aria-label="Recipient's username"
+                <input type="text" name="name" id="name" class="form-control" placeholder="new type" aria-label="Recipient's username"
                     aria-describedby="button-addon2">
-                <button class="btn btn-outline-dark" type="submit" id="button-addon2">add</button>
+                <button class="btn btn-outline-dark text-uppercase" type="submit" id="button-addon2">add</button>
             </form>
         </ul>
     </div>

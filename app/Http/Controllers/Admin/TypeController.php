@@ -35,7 +35,7 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreTypeRequest  $request
+     * @param  \App\Http\Requests\StoreTypeRequest  
      * @return \Illuminate\Http\Response
      */
     public function store(StoreTypeRequest $request)
@@ -48,7 +48,7 @@ class TypeController extends Controller
 
         Type::create($val_data);
 
-        return to_route('admin.types.index')->with('message', 'Type created successfully');
+        return to_route('admin.projects.index')->with('message', 'Type created successfully');
     }
 
     /**
